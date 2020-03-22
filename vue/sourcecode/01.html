@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue源码分析（一）初探vue | TJ1</title>
+    <meta name="description" content="Just playing around">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.5f39d02d.css" as="style"><link rel="preload" href="/blog/assets/js/app.dbccca05.js" as="script"><link rel="preload" href="/blog/assets/js/2.794660b5.js" as="script"><link rel="preload" href="/blog/assets/js/8.cfc33c69.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.09e741be.js"><link rel="prefetch" href="/blog/assets/js/11.f688c97a.js"><link rel="prefetch" href="/blog/assets/js/12.8e4689a2.js"><link rel="prefetch" href="/blog/assets/js/13.e9c3e13f.js"><link rel="prefetch" href="/blog/assets/js/14.68dfc1b9.js"><link rel="prefetch" href="/blog/assets/js/15.3abd7265.js"><link rel="prefetch" href="/blog/assets/js/16.0b5e90f9.js"><link rel="prefetch" href="/blog/assets/js/17.ea266608.js"><link rel="prefetch" href="/blog/assets/js/18.370b9033.js"><link rel="prefetch" href="/blog/assets/js/19.ecc569d1.js"><link rel="prefetch" href="/blog/assets/js/20.7b25ff75.js"><link rel="prefetch" href="/blog/assets/js/3.03552417.js"><link rel="prefetch" href="/blog/assets/js/4.e6e9cd15.js"><link rel="prefetch" href="/blog/assets/js/5.48ff9860.js"><link rel="prefetch" href="/blog/assets/js/6.cb29dd52.js"><link rel="prefetch" href="/blog/assets/js/7.72cd8c81.js"><link rel="prefetch" href="/blog/assets/js/9.39c326b8.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.5f39d02d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">TJ1</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/sourcecode/" class="nav-link router-link-active">
+  源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vuepress/" class="nav-link">
+  vuepress
+</a></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  External
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/sourcecode/" class="nav-link router-link-active">
+  源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vuepress/" class="nav-link">
+  vuepress
+</a></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  External
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>源码分析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/vue/sourcecode/01.html" class="active sidebar-link">vue源码分析（一）初探vue</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/vue/sourcecode/02.html" class="sidebar-link">vue源码分析（二）vue运行时版本和带编译的版本区别</a></li><li><a href="/blog/vue/sourcecode/03.html" class="sidebar-link">vue源码分析(三) new Vue背后的故事</a></li><li><a href="/blog/vue/sourcecode/04.html" class="sidebar-link">vue源码分析(四) 深入源码了解Vue实例的挂载</a></li><li><a href="/blog/vue/sourcecode/05.html" class="sidebar-link">vue源码分析(五) 关于虚拟DOM</a></li><li><a href="/blog/vue/sourcecode/06.html" class="sidebar-link">vue源码分析(七)createComponent方法</a></li><li><a href="/blog/vue/sourcecode/07.html" class="sidebar-link">vue源码分析(七)createComponent方法</a></li><li><a href="/blog/vue/sourcecode/08.html" class="sidebar-link">vue源码分析(八)实例分析组件的patch过程</a></li><li><a href="/blog/vue/sourcecode/09.html" class="sidebar-link">Vue源码学习(九) Vue中的options合并</a></li><li><a href="/blog/vue/sourcecode/10.html" class="sidebar-link">vue源码学习（十）从源码中看vue实例的生命周期</a></li><li><a href="/blog/vue/sourcecode/11.html" class="sidebar-link">测试</a></li><li><a href="/blog/vue/sourcecode/" class="sidebar-link">vue源码分析</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>本系列文章是作者在学习vue源码时的学习笔记，在学习的过程中会参考其他的文章，并在文末注明相关的引用。如有错误，欢迎指证。</p> <blockquote><p>vue源码版本: vue@2.5.17-beta.0</p></blockquote> <h3 id="一-类型校验"><a href="#一-类型校验" class="header-anchor">#</a> 一.  类型校验</h3> <p><code>vue</code>使用了<code>flow</code>进行语法校验，其中<code>vue</code>自定义了一些数据类型比如<code>component</code>或者<code>Element</code> 等.</p> <blockquote><p><code>flow</code>是facebook出品的代码检查工具，功能类似于typeScript,能够帮助你在编译期间发现代码中数据类型的错误。</p></blockquote> <h3 id="二-why-function"><a href="#二-why-function" class="header-anchor">#</a> 二.<code>why function</code></h3> <p>打开源码目录下的<code>src/platforms/web/entry-runtime-with-compiler.js</code>.这里导出了<code>vue</code>.最终我们可以查找到<code>src/core/instance/index.js</code>. 可以看到以下代码</p> <div class="language-js extra-class"><pre class="language-js"><code>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> initMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./init'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> stateMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./state'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> renderMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./render'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> eventsMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./events'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> lifecycleMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./lifecycle'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> warn <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../util/index'</span>
+
+<span class="token keyword">function</span> <span class="token function">Vue</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span>
+    <span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Vue</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Vue is a constructor and should be called with the `new` keyword'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_init</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">initMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>  	<span class="token comment">//Vue.prototype._init 原型上挂在_init方法</span>
+<span class="token function">stateMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> 	<span class="token comment">// Vue.prototype添加$data $props $set $delete $watch方法</span>
+<span class="token function">eventsMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> 	<span class="token comment">// Vue.prototype添加$on $off $once $emit方法</span>
+<span class="token function">lifecycleMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> <span class="token comment">// Vue.prototype添加_update $forceUpdate $destroy 方法</span>
+<span class="token function">renderMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> 	<span class="token comment">//Vue.prototype添加$nextTick _render等方法</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Vue
+
+</code></pre></div><p>这里可以看到<code>Vue</code>是用<code>function</code>而不是<code>class</code>来声明的？为什么不用<code>class</code>来声明呢？
+首先我们看到<code>Vue</code>构造函数声明特别简单，紧接着调用不同的<code>mixin</code>函数给<code>Vue</code>的原型对象上添加方法,使用<code>function</code>来声明可以有效的组织代码，将不同功能的<code>mixin</code>函数拆分成不同的文件，这样不用维护一个大的文件。如果我们使用<code>class</code>声明<code>Vue</code>，可能会这样</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Vue</span> <span class="token punctuation">{</span>
+	<span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">$data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">$props</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	$<span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	$<span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">$watch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">_update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">$forceUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> 
+	<span class="token function">$destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	<span class="token function">_render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><blockquote><p>可以看到如果使用<code>class</code>声明是非常复杂的，需要在一个class里面维护太多的方法。
+这里我们可以借鉴<code>vue</code>的开发思路，在开发框架时使用<code>function</code>比<code>class</code>更利于代码的组织和维护</p></blockquote> <blockquote><p>除了在原型上添加方法，还调用了<code>initGlobalAPI</code>注册全局<code>API</code>，源码目录下搜索<code>initGlobalAPI</code>。</p></blockquote> <h3 id="项目结构"><a href="#项目结构" class="header-anchor">#</a> 项目结构</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code>
+├─ <span class="token punctuation">.</span>circleci                   <span class="token comment">// 包含CircleCI持续集成/持续部署工具的配置文件</span>
+├─ <span class="token punctuation">.</span>github                   <span class="token comment">// 项目相关的说明文档，上面的说明文档就在此文件夹</span>
+├─ benchmarks                 <span class="token comment">// 基准,性能测试文件，Vue的跑分demo，比如大数据量的table或者渲染大量SVG</span>
+├─ dist                       <span class="token comment">// 构建后输出的不同版本Vue文件(UMD、CommonJS、ES 生产和开发包)</span>
+├─ examples                   <span class="token comment">// 部分示例，用Vue写的一些小demo</span>
+├─ flow                       <span class="token comment">// flow 因为Vue使用了 [Flow](https://flow.org/) 来进行静态类型检查，静态类型检查类型声明文件</span>
+├─ packages                   <span class="token comment">// 包含服务端渲染和模板编译器两种不同的NPM包，是提供给不同使用场景使用的</span>
+├─ scripts                   <span class="token comment">// 存放npm脚本配置文件，结合webpack、rollup进行编译、测试、构建等操作（使用者不需要关心）</span>
+│   ├─ alias<span class="token punctuation">.</span>js              <span class="token comment">// 模块导入所有源代码和测试中使用的别名</span>
+│   ├─ config<span class="token punctuation">.</span>js             <span class="token comment">// 包含在'dist/`中找到的所有文件的生成配置</span>
+│   ├─ build<span class="token punctuation">.</span>js               <span class="token comment">// 对 config.js 中所有的rollup配置进行构建</span>
+├─ src                        <span class="token comment">// 主要源码所在位置，核心内容</span>
+│   ├─ compiler               <span class="token comment">// 解析模版相关</span>
+│       ├─ codegen            <span class="token comment">// 把AST转换为Render函数</span>
+│       ├─ directives         <span class="token comment">// 通用生成Render函数之前需要处理的指令</span>
+│       ├─ parser              <span class="token comment">// 解析模版成AST</span>
+│   ├─ core                    <span class="token comment">// Vue核心代码，包括内置组件，全局API封装，Vue 实例化，观察者，虚拟DOM, 工具函数等等。</span>
+│       ├─ components          <span class="token comment">// 组件相关属性，主要是Keep-Alive</span>
+│       ├─ global<span class="token operator">-</span>api          <span class="token comment">// Vue全局API，如Vue.use,Vue.extend,Vue.mixin等</span>
+│       ├─ instance            <span class="token comment">// 实例化相关内容，生命周期、事件等</span>
+│       ├─ observer            <span class="token comment">// 响应式核心目录，双向数据绑定相关文件</span>
+│       ├─ util                <span class="token comment">// 工具方法</span>
+│       └─ vdom                <span class="token comment">// 包含虚拟DOM 创建（creation）和打补丁(patching) 的代码</span>
+│   ├─ platforms               <span class="token comment">// 和平台相关的内容，Vue.js 是一个跨平台的MVVM 框架(web、native、weex)</span>
+│       ├─ web                 <span class="token comment">// web端</span>
+│           ├─ compiler        <span class="token comment">// web端编译相关代码，用来编译模版成render函数basic.js</span>
+│           ├─ runtime         <span class="token comment">// web端运行时相关代码，用于创建Vue实例等</span>
+│           ├─ server          <span class="token comment">// 服务端渲染</span>
+│           └─ util            <span class="token comment">// 相关工具类</span>
+│       └─ weex                <span class="token comment">// 基于通用跨平台的 Web 开发语言和开发经验，来构建 Android、iOS 和 Web 应用</span>
+│   ├─ server                  <span class="token comment">// 服务端渲染（ssr）</span>
+│   ├─ sfc                     <span class="token comment">// 转换单文件组件（*.vue）</span>
+│   └─ shared                  <span class="token comment">// 全局共享的方法和常量</span>
+├─ test                        <span class="token comment">// test 测试用例</span>
+├─ types                       <span class="token comment">// Vue新版本支持TypeScript，主要是TypeScript类型声明文件</span>
+├─ node_modules               <span class="token comment">// npm包存放目录</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>babelrc<span class="token punctuation">.</span>js               <span class="token comment">// babel配置</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>editorconfig             <span class="token comment">// 文本编码样式配置文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>eslintignore             <span class="token comment">// eslint校验忽略文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>eslintrc<span class="token punctuation">.</span>js              <span class="token comment">// eslint配置文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>flowconfig               <span class="token comment">// flow配置文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token punctuation">.</span>gitignore               <span class="token comment">// Git提交忽略文件配置</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token constant">BACKERS</span><span class="token punctuation">.</span>md               <span class="token comment">// 赞助者信息文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token constant">LICENSE</span>                 <span class="token comment">// 项目开源协议</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token keyword">package</span><span class="token punctuation">.</span>json             <span class="token comment">// 依赖</span>
+<span class="token operator">|</span><span class="token operator">--</span> <span class="token constant">README</span><span class="token punctuation">.</span>md               <span class="token comment">// 说明文件</span>
+<span class="token operator">|</span><span class="token operator">--</span> yarn<span class="token punctuation">.</span>lock               <span class="token comment">// yarn版本锁定文件</span>
+
+</code></pre></div><blockquote><p>目录结构来自于参考文章<a href="https://www.cnblogs.com/yimeidan/p/10594620.html" target="_blank" rel="noopener noreferrer">Vue源码之目录结构<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <h3 id="四-小结"><a href="#四-小结" class="header-anchor">#</a> 四 小结</h3> <ul><li><code>vue</code>使用了<code>flow</code>作语法类型校验工具</li> <li><code>vue</code> 使用了<code>rollup</code> 来作打包工具</li> <li><code>vue</code> 使用了<code>function</code>来声明<code>Vue</code>,并调用不同功能的<code>mixin</code>函数来给<code>Vue</code>原型添加各种方法。其次还注册了全局的<code>API</code></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/blog/vue/sourcecode/02.html">
+        vue源码分析（二）vue运行时版本和带编译的版本区别
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.dbccca05.js" defer></script><script src="/blog/assets/js/2.794660b5.js" defer></script><script src="/blog/assets/js/8.cfc33c69.js" defer></script>
+  </body>
+</html>
