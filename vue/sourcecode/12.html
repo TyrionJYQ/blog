@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>十二.异步组件 | TJ</title>
+    <meta name="description" content="Just playing around">
+    <meta name="generator" content="VuePress 1.4.0">
+    
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.0456758e.css" as="style"><link rel="preload" href="/blog/assets/js/app.5984855e.js" as="script"><link rel="preload" href="/blog/assets/js/2.c7ebce8d.js" as="script"><link rel="preload" href="/blog/assets/js/35.976fb74c.js" as="script"><link rel="preload" href="/blog/assets/js/3.6401d0a2.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.01d5f328.js"><link rel="prefetch" href="/blog/assets/js/11.3a7b4689.js"><link rel="prefetch" href="/blog/assets/js/12.b23bc729.js"><link rel="prefetch" href="/blog/assets/js/13.0f2acac2.js"><link rel="prefetch" href="/blog/assets/js/14.5f5e67d4.js"><link rel="prefetch" href="/blog/assets/js/15.4c5b4de3.js"><link rel="prefetch" href="/blog/assets/js/16.e0a2f185.js"><link rel="prefetch" href="/blog/assets/js/17.684a6b26.js"><link rel="prefetch" href="/blog/assets/js/18.f43feb16.js"><link rel="prefetch" href="/blog/assets/js/19.ef9a1676.js"><link rel="prefetch" href="/blog/assets/js/20.e76726dc.js"><link rel="prefetch" href="/blog/assets/js/21.689abde1.js"><link rel="prefetch" href="/blog/assets/js/22.9055b1ba.js"><link rel="prefetch" href="/blog/assets/js/23.531b93f8.js"><link rel="prefetch" href="/blog/assets/js/24.2c58187c.js"><link rel="prefetch" href="/blog/assets/js/25.fbdd3a01.js"><link rel="prefetch" href="/blog/assets/js/26.31609bde.js"><link rel="prefetch" href="/blog/assets/js/27.5b3a9536.js"><link rel="prefetch" href="/blog/assets/js/28.1dd1c007.js"><link rel="prefetch" href="/blog/assets/js/29.099e9772.js"><link rel="prefetch" href="/blog/assets/js/30.7716dbe9.js"><link rel="prefetch" href="/blog/assets/js/31.8b9f9843.js"><link rel="prefetch" href="/blog/assets/js/32.fb43c2d3.js"><link rel="prefetch" href="/blog/assets/js/33.7c56bc23.js"><link rel="prefetch" href="/blog/assets/js/34.eba1f2f0.js"><link rel="prefetch" href="/blog/assets/js/36.98d6bf54.js"><link rel="prefetch" href="/blog/assets/js/37.7e718e27.js"><link rel="prefetch" href="/blog/assets/js/38.ebd03acf.js"><link rel="prefetch" href="/blog/assets/js/39.484c2704.js"><link rel="prefetch" href="/blog/assets/js/4.35e4773b.js"><link rel="prefetch" href="/blog/assets/js/40.022fbbc3.js"><link rel="prefetch" href="/blog/assets/js/41.49cee2d3.js"><link rel="prefetch" href="/blog/assets/js/42.3d0a8b18.js"><link rel="prefetch" href="/blog/assets/js/43.34a10402.js"><link rel="prefetch" href="/blog/assets/js/44.399bc4d8.js"><link rel="prefetch" href="/blog/assets/js/45.0ba483f5.js"><link rel="prefetch" href="/blog/assets/js/5.6b4a64af.js"><link rel="prefetch" href="/blog/assets/js/6.2b7fa477.js"><link rel="prefetch" href="/blog/assets/js/7.2569d073.js"><link rel="prefetch" href="/blog/assets/js/8.165ed02c.js"><link rel="prefetch" href="/blog/assets/js/9.629b3554.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.0456758e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">TJ</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/blog/javascript/" class="nav-link">
+  javascript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/sourcecode/" class="nav-link router-link-active">
+  源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vuepress/" class="nav-link">
+  vuepress
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/npm/" class="nav-link">
+  npm
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/TyrionJYQ" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/TyrionJ" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="构建" class="dropdown-title"><span class="title">构建</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/tool/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/rollup/" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/cli/" class="nav-link">
+  CLI
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/about/" class="nav-link">
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/blog/javascript/" class="nav-link">
+  javascript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="vue" class="dropdown-title"><span class="title">vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/vue/sourcecode/" class="nav-link router-link-active">
+  源码分析
+</a></li><li class="dropdown-item"><!----> <a href="/blog/vue/vuepress/" class="nav-link">
+  vuepress
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="node" class="dropdown-title"><span class="title">node</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/node/npm/" class="nav-link">
+  npm
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接" class="dropdown-title"><span class="title">链接</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/TyrionJYQ" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/TyrionJ" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  csdn
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="构建" class="dropdown-title"><span class="title">构建</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/tool/webpack/" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/rollup/" class="nav-link">
+  rollup
+</a></li><li class="dropdown-item"><!----> <a href="/blog/tool/cli/" class="nav-link">
+  CLI
+</a></li></ul></div></div><div class="nav-item"><a href="/blog/about/" class="nav-link">
+  关于
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>源码分析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/vue/sourcecode/" class="sidebar-link">概览</a></li><li><a href="/blog/vue/sourcecode/01.html" class="sidebar-link">一.初探vue</a></li><li><a href="/blog/vue/sourcecode/02.html" class="sidebar-link">二.运行时版本和带编译的版本区别</a></li><li><a href="/blog/vue/sourcecode/03.html" class="sidebar-link">三. new Vue背后的故事</a></li><li><a href="/blog/vue/sourcecode/04.html" class="sidebar-link">四.Vue实例的挂载</a></li><li><a href="/blog/vue/sourcecode/05.html" class="sidebar-link">五.虚拟DOM</a></li><li><a href="/blog/vue/sourcecode/06.html" class="sidebar-link">六.虚拟dom成真实的dom</a></li><li><a href="/blog/vue/sourcecode/07.html" class="sidebar-link">七.createComponent方法</a></li><li><a href="/blog/vue/sourcecode/08.html" class="sidebar-link">八.组件的patch过程</a></li><li><a href="/blog/vue/sourcecode/09.html" class="sidebar-link">九. Vue中的options合并</a></li><li><a href="/blog/vue/sourcecode/10.html" class="sidebar-link">十.生命周期</a></li><li><a href="/blog/vue/sourcecode/11.html" class="sidebar-link">十一.组件注册</a></li><li><a href="/blog/vue/sourcecode/12.html" class="active sidebar-link">十二.异步组件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#为什么要异步组件" class="sidebar-link">为什么要异步组件</a></li><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#异步组件和普通组件的区别声明" class="sidebar-link">异步组件和普通组件的区别声明</a></li><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#源码分析" class="sidebar-link">源码分析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#函数式" class="sidebar-link">函数式</a></li><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#import语法" class="sidebar-link">import语法</a></li><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#高级异步组件" class="sidebar-link">高级异步组件</a></li></ul></li><li class="sidebar-sub-header"><a href="/blog/vue/sourcecode/12.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/blog/vue/sourcecode/13.html" class="sidebar-link">十三. 响应式数据</a></li><li><a href="/blog/vue/sourcecode/14.html" class="sidebar-link">十四. 依赖收集</a></li><li><a href="/blog/vue/sourcecode/15.html" class="sidebar-link">十五 派发更新</a></li><li><a href="/blog/vue/sourcecode/16.html" class="sidebar-link">十六 next-tick</a></li><li><a href="/blog/vue/sourcecode/17.html" class="sidebar-link">十七 响应式属性的增删</a></li><li><a href="/blog/vue/sourcecode/18.html" class="sidebar-link">十八 计算属性和侦听属性</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="异步组件"><a href="#异步组件" class="header-anchor">#</a> 异步组件</h1> <p>本文主要讲述vue中的异步组件，如果你看完本文相信你应该对vue中的异步组件有着相对深刻的理解，
+如果你还不知道vue中异步组件是什么，请参考<a href="https://cn.vuejs.org/v2/guide/components-dynamic-async.html#%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6" target="_blank" rel="noopener noreferrer">vue异步组件<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="为什么要异步组件"><a href="#为什么要异步组件" class="header-anchor">#</a> 为什么要异步组件</h2> <p>异步组件是vue性能优化的一种方式，主要目的是为了解决页面引入很多组件导致打包后的js体积过大，我们知道同样条件下，文件体积越大，请求耗时越长，因此
+vue提供了异步组件，当页面中通过异步方式来声明（全局）或者注册（局部）组件时，每个异步组件会被单独打包成一个js文件，每个异步组件对应的js文件在需要时才会被加载。
+通过减小打包文件体积的方式实现了性能优化。</p> <p>组件按需加载通常使用在路由中，但页面上其他组件也可以通过异步组件实现懒加载
+<strong>App.vue</strong></p> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Foo</span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>getBar<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>查看bar组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>查看fooBar组件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Bar</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>showBar<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> Foo <span class="token keyword">from</span> <span class="token string">'./Foo.vue'</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+         showBar<span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+     
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    components<span class="token operator">:</span> <span class="token punctuation">{</span>
+      Foo<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token operator">:</span><span class="token punctuation">{</span>
+      <span class="token function">getBar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$options<span class="token punctuation">.</span>components<span class="token punctuation">.</span><span class="token function-variable function">Bar</span> <span class="token operator">=</span>  <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./Bar.vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>showBar <span class="token operator">=</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p><strong>Foo.vue</strong></p> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    {{msg}}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        msg<span class="token operator">:</span> <span class="token string">'foo-comp'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>Bar.vue</strong></p> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    {{msg}}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        msg<span class="token operator">:</span> <span class="token string">'bar-comp'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>Bar组件会被单独打包成0.bundle.js，页面初始化加载不会请求js文件，当点击查看bar组件时，会请求0.bundle.js，并在页面上渲染Bar组件。
+这里提供了一种思路从而实现了非路由组件的按需加载。那么路由组件的按需加载使用起来就比较简单，路由组件直接使用异步组件方式引用即可。</p> <h2 id="异步组件和普通组件的区别声明"><a href="#异步组件和普通组件的区别声明" class="header-anchor">#</a> 异步组件和普通组件的区别声明</h2> <p>普通组件无论时全局组件还是局部组件都是一个对象，而异步组件定义为一个函数或者一个Promise。
+异步组件声明有如下三种方式，函数式和Promise以及高级异步组件
+<strong>函数式</strong></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'async-webpack-example'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 这个特殊的 `require` 语法将会告诉 webpack</span>
+  <span class="token comment">// 自动将你的构建代码切割成多个包，这些包</span>
+  <span class="token comment">// 会通过 Ajax 请求加载</span>
+  <span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./my-async-component'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><strong>import语法</strong>
+webpack import语法会返回一个Promise</p> <div class="language-vue line-numbers-mode"><pre class="language-vue"><code>{
+	...
+	components: {
+		Bar: () =&gt; import('./Bar.vue')
+	}
+	...
+	
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><strong>高级异步组件</strong></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">AsyncComponent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">// 需要加载的组件 (应该是一个 `Promise` 对象)</span>
+  component<span class="token operator">:</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./MyComponent.vue'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token comment">// 异步组件加载时使用的组件</span>
+  loading<span class="token operator">:</span> LoadingComponent<span class="token punctuation">,</span>
+  <span class="token comment">// 加载失败时使用的组件</span>
+  error<span class="token operator">:</span> ErrorComponent<span class="token punctuation">,</span>
+  <span class="token comment">// 展示加载时组件的延时时间。默认值是 200 (毫秒)</span>
+  delay<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+  <span class="token comment">// 如果提供了超时时间且组件加载也超时了，</span>
+  <span class="token comment">// 则使用加载失败时使用的组件。默认值是：`Infinity`</span>
+  timeout<span class="token operator">:</span> <span class="token number">3000</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>局部异步组件建议使用import语法，相对函数式声明更加简洁</p></div> <h2 id="源码分析"><a href="#源码分析" class="header-anchor">#</a> 源码分析</h2> <p>下面分别从源码角度分析函数式异步，import语法和高级异步组件,主要涉及到createComponent和resolveAsyncComponent两个函数</p> <h3 id="函数式"><a href="#函数式" class="header-anchor">#</a> 函数式</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">createComponent</span> <span class="token punctuation">(</span>
+  <span class="token parameter">Ctor<span class="token operator">:</span> Class<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span> <span class="token operator">|</span> Function <span class="token operator">|</span> Object <span class="token operator">|</span> <span class="token keyword">void</span><span class="token punctuation">,</span>
+  data<span class="token operator">:</span> <span class="token operator">?</span>VNodeData<span class="token punctuation">,</span>
+  context<span class="token operator">:</span> Component<span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token operator">?</span>Array<span class="token operator">&lt;</span>VNode<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  tag<span class="token operator">?</span><span class="token operator">:</span> string</span>
+<span class="token punctuation">)</span><span class="token operator">:</span> VNode <span class="token operator">|</span> Array<span class="token operator">&lt;</span>VNode<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> baseCtor <span class="token operator">=</span> context<span class="token punctuation">.</span>$options<span class="token punctuation">.</span>_base
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> Ctor <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Invalid Component definition: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">String</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> context<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// async component</span>
+  <span class="token keyword">let</span> asyncFactory
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">.</span>cid<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    asyncFactory <span class="token operator">=</span> Ctor
+    Ctor <span class="token operator">=</span> <span class="token function">resolveAsyncComponent</span><span class="token punctuation">(</span>asyncFactory<span class="token punctuation">,</span> baseCtor<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Ctor <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// return a placeholder node for async component, which is rendered</span>
+      <span class="token comment">// as a comment node but preserves all the raw information for the node.</span>
+      <span class="token comment">// the information will be used for async server-rendering and hydration.</span>
+      <span class="token keyword">return</span> <span class="token function">createAsyncPlaceholder</span><span class="token punctuation">(</span>
+        asyncFactory<span class="token punctuation">,</span>
+        data<span class="token punctuation">,</span>
+        context<span class="token punctuation">,</span>
+        children<span class="token punctuation">,</span>
+        tag
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  data <span class="token operator">=</span> data <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token comment">// resolve constructor options in case global mixins are applied after</span>
+  <span class="token comment">// component constructor creation</span>
+  <span class="token function">resolveConstructorOptions</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">)</span>
+
+  <span class="token comment">// transform component v-model data into props &amp; events</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isDef</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>model<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">transformModel</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">.</span>options<span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// extract props</span>
+  <span class="token keyword">const</span> propsData <span class="token operator">=</span> <span class="token function">extractPropsFromVNodeData</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> Ctor<span class="token punctuation">,</span> tag<span class="token punctuation">)</span>
+
+  <span class="token comment">// functional component</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">.</span>options<span class="token punctuation">.</span>functional<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">createFunctionalComponent</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">,</span> propsData<span class="token punctuation">,</span> data<span class="token punctuation">,</span> context<span class="token punctuation">,</span> children<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// extract listeners, since these needs to be treated as</span>
+  <span class="token comment">// child component listeners instead of DOM listeners</span>
+  <span class="token keyword">const</span> listeners <span class="token operator">=</span> data<span class="token punctuation">.</span>on
+  <span class="token comment">// replace with listeners with .native modifier</span>
+  <span class="token comment">// so it gets processed during parent component patch.</span>
+  data<span class="token punctuation">.</span>on <span class="token operator">=</span> data<span class="token punctuation">.</span>nativeOn
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isTrue</span><span class="token punctuation">(</span>Ctor<span class="token punctuation">.</span>options<span class="token punctuation">.</span>abstract<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// abstract components do not keep anything</span>
+    <span class="token comment">// other than props &amp; listeners &amp; slot</span>
+
+    <span class="token comment">// work around flow</span>
+    <span class="token keyword">const</span> slot <span class="token operator">=</span> data<span class="token punctuation">.</span>slot
+    data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>slot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      data<span class="token punctuation">.</span>slot <span class="token operator">=</span> slot
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// install component management hooks onto the placeholder node</span>
+  <span class="token function">installComponentHooks</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+  <span class="token comment">// return a placeholder vnode</span>
+  <span class="token keyword">const</span> name <span class="token operator">=</span> Ctor<span class="token punctuation">.</span>options<span class="token punctuation">.</span>name <span class="token operator">||</span> tag
+  <span class="token keyword">const</span> vnode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VNode</span><span class="token punctuation">(</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">vue-component-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Ctor<span class="token punctuation">.</span>cid<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> <span class="token string">''</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    data<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> Ctor<span class="token punctuation">,</span> propsData<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> children <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    asyncFactory
+  <span class="token punctuation">)</span>
+
+  <span class="token comment">// Weex specific: invoke recycle-list optimized @render function for</span>
+  <span class="token comment">// extracting cell-slot template.</span>
+  <span class="token comment">// https://github.com/Hanks10100/weex-native-directive/tree/master/component</span>
+  <span class="token comment">/* istanbul ignore if */</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>__WEEX__ <span class="token operator">&amp;&amp;</span> <span class="token function">isRecyclableComponent</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">renderRecyclableComponentTemplate</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> vnode
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">resolveAsyncComponent</span> <span class="token punctuation">(</span>
+  <span class="token parameter">factory<span class="token operator">:</span> Function<span class="token punctuation">,</span>
+  baseCtor<span class="token operator">:</span> Class<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> Class<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+		<span class="token keyword">const</span> owner <span class="token operator">=</span> currentRenderingInstance
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>owner <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isDef</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span>owners<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		  <span class="token keyword">const</span> owners <span class="token operator">=</span> factory<span class="token punctuation">.</span>owners <span class="token operator">=</span> <span class="token punctuation">[</span>owner<span class="token punctuation">]</span>
+		  <span class="token keyword">let</span> sync <span class="token operator">=</span> <span class="token boolean">true</span>
+		  <span class="token keyword">let</span> timerLoading <span class="token operator">=</span> <span class="token keyword">null</span>
+		  <span class="token keyword">let</span> timerTimeout <span class="token operator">=</span> <span class="token keyword">null</span>
+		
+		  <span class="token punctuation">;</span><span class="token punctuation">(</span>owner<span class="token operator">:</span> any<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'hook:destroyed'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">remove</span><span class="token punctuation">(</span>owners<span class="token punctuation">,</span> owner<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		
+		  <span class="token keyword">const</span> <span class="token function-variable function">forceRender</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">renderCompleted<span class="token operator">:</span> boolean</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> owners<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		      <span class="token punctuation">(</span>owners<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">:</span> any<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$forceUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		    <span class="token punctuation">}</span>
+		
+		    <span class="token keyword">if</span> <span class="token punctuation">(</span>renderCompleted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		      owners<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+		      <span class="token keyword">if</span> <span class="token punctuation">(</span>timerLoading <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		        <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timerLoading<span class="token punctuation">)</span>
+		        timerLoading <span class="token operator">=</span> <span class="token keyword">null</span>
+		      <span class="token punctuation">}</span>
+		      <span class="token keyword">if</span> <span class="token punctuation">(</span>timerTimeout <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		        <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timerTimeout<span class="token punctuation">)</span>
+		        timerTimeout <span class="token operator">=</span> <span class="token keyword">null</span>
+		      <span class="token punctuation">}</span>
+		    <span class="token punctuation">}</span>
+		  <span class="token punctuation">}</span>
+		
+		  <span class="token keyword">const</span> resolve <span class="token operator">=</span> <span class="token function">once</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res<span class="token operator">:</span> Object <span class="token operator">|</span> Class<span class="token operator">&lt;</span>Component<span class="token operator">&gt;</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		    <span class="token comment">// cache resolved</span>
+		    factory<span class="token punctuation">.</span>resolved <span class="token operator">=</span> <span class="token function">ensureCtor</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> baseCtor<span class="token punctuation">)</span>
+		    <span class="token comment">// invoke callbacks only if this is not a synchronous resolve</span>
+		    <span class="token comment">// (async resolves are shimmed as synchronous during SSR)</span>
+		    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>sync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		      <span class="token function">forceRender</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+		    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		      owners<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+		    <span class="token punctuation">}</span>
+		  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+		
+		  <span class="token keyword">const</span> reject <span class="token operator">=</span> <span class="token function">once</span><span class="token punctuation">(</span><span class="token parameter">reason</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		    process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">warn</span><span class="token punctuation">(</span>
+		      <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed to resolve async component: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">String</span><span class="token punctuation">(</span>factory<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+		      <span class="token punctuation">(</span>reason <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\nReason: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>reason<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">)</span>
+		    <span class="token punctuation">)</span>
+		    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isDef</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span>errorComp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		      factory<span class="token punctuation">.</span>error <span class="token operator">=</span> <span class="token boolean">true</span>
+		      <span class="token function">forceRender</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+		    <span class="token punctuation">}</span>
+		  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+		
+		  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+			sync <span class="token operator">=</span> <span class="token boolean">false</span>
+			<span class="token comment">// return in case resolved synchronously</span>
+			<span class="token keyword">return</span> factory<span class="token punctuation">.</span>loading
+			  <span class="token operator">?</span> factory<span class="token punctuation">.</span>loadingComp
+			  <span class="token operator">:</span> factory<span class="token punctuation">.</span>resolved
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br></div></div><p>createComponent创建组件vnode,如果是异步组件，那么Ctor.cid为undefined,会执行<code>Ctor = resolveAsyncComponent(asyncFactory, baseCtor)</code>
+在resolveAsyncComponent方法中，会将当前组件或根实例添加到owners中，也就是异步组件的拥有者。
+调用once方法包装异步组件声明中的resolve和reject函数，然后执行factory函数，此时会加载组件也就是执行<code>realComp = require('./my-async-component')</code>,
+realComp（伪代码）为真实组件
+请求文件是一个异步过程，此时sync为false，文件请求成功后会执行resolve函数，调用ensureCtor方法将realComp转化我组件构造器。此时sync为false，会调用forceRender方法
+forceRender中会遍历owers，调用根实例或组件实例的forceUpdate方法，此时会进入新一轮的渲染，在执行到createComponent方法时，会再次执行resolveAsyncComponent，返回
+factory.resolved也就是ensureCtor方法生成的组件构造器，此时会创建真正的组件vnode.最终渲染后的dom会取代之前的注释节点。</p> <h3 id="import语法"><a href="#import语法" class="header-anchor">#</a> import语法</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">factory</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isPromise</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// () =&gt; Promise</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isUndef</span><span class="token punctuation">(</span>factory<span class="token punctuation">.</span>resolved<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          res<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span> 
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>执行factory函数也就是<code>() =&gt; import('./Foo.vue')</code>返回的res为Promise,<code>isPromise(res)</code>为true但factory.resolved为undefined，所以此时会执行resolve函数，从而执行forceRender,后续步骤和
+函数声明的异步组件相同。</p> <h3 id="高级异步组件"><a href="#高级异步组件" class="header-anchor">#</a> 高级异步组件</h3> <p>高级异步组件只是在组件的渲染过程中增加了loading,error,和comp，loading对应加载中组件，error为渲染失败时展示组件，如果定义了loading属性，并且delay不为0,那么高级异步组件整个成功的渲染过程不会
+被渲染成注释节点，而是LoadingComp=&gt;TargetCompent,即Loading组件和真正渲染的组件MyComponent</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>非高级异步组件渲染过程： 渲染成注释节点，请求到组件后会调用forceUpdate方法强制根实例或者组件实例更新，此时factory.resolved为Ctor，第二轮更新的过程和普通组件相同</p> <p>高级异步组件只是功能相对丰富，函数返回的对象具有loading和error属性，增加了异步组件的功能，方便展示请求中和请求失败的效果。其本质和普通异步组件相同，不过是增加了几个分支。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">4/16/2020, 12:36:20 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/vue/sourcecode/11.html" class="prev">
+        十一.组件注册
+      </a></span> <span class="next"><a href="/blog/vue/sourcecode/13.html">
+        十三. 响应式数据
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/blog/assets/js/app.5984855e.js" defer></script><script src="/blog/assets/js/2.c7ebce8d.js" defer></script><script src="/blog/assets/js/35.976fb74c.js" defer></script><script src="/blog/assets/js/3.6401d0a2.js" defer></script>
+  </body>
+</html>
